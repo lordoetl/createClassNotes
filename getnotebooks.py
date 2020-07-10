@@ -1,3 +1,5 @@
+
+  
 ###############
 # The jupyter merging part of this was duplicated from:
 # '''
@@ -10,6 +12,8 @@ import random
 import glob
 import os
 import json
+import time
+import GetResources
 
 weekNo="05"
 dayNo="3"
@@ -103,14 +107,16 @@ def create_base_for_results(base):
     # path to root log directory 
     root_logDir = os.path.join(os.curdir, "results_folder"+weekNo)
 
-    def move_file_sub_log_dir(base):
+    run_id = time.strftime("mergedFile_%Y_%m_%d-%H_%M_%S")
+    move_to_path = os.path.join(root_logDir, run_id)
+
+    def move_file_sub_log_dir(base,move_to_path):
         '''This moves the baseFile to sub log directory'''
         # generate run id based on current time
-        import time
-        run_id = time.strftime("mergedFile_%Y_%m_%d-%H_%M_%S")
+
         
         # path to move baseFile
-        move_to_path = os.path.join(root_logDir, run_id)
+        # move_to_path = os.path.join(root_logDir, run_id)
         if not os.path.isdir(move_to_path):
             os.makedirs(move_to_path)
         base_file = base
@@ -121,7 +127,8 @@ def create_base_for_results(base):
         print(f"\n## Access merged file at \
 the following location ##\n{move_to_path}")
     
-    move_file_sub_log_dir(baseName)
+    move_file_sub_log_dir(baseName,move_to_path)
+    GetResources.createResources(weekNo,dayNo,baseName,pathToYourLessonPlans,move_to_path)
 
 class CleanExit(Exception):
     '''Protects program from stopping abruptly'''
@@ -168,4 +175,5 @@ def main(listOfFiles):
 
 
 main(createListOFiles(weekNo,dayNo))
+
 
