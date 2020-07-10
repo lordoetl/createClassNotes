@@ -1,19 +1,25 @@
-
+###############
+# The jupyter merging part of this was duplicated from:
+# '''
+# # Author: Sunny Bhaveen Chandra
+# # Contact: sunny.c17hawke@gmail.com
+# '''
+###
 import time
 import random
 import glob
 import os
 import json
 
-# import testfile as t
 weekNo="05"
 dayNo="3"
 baseName = weekNo+'_Notes.ipynb'
+pathToYourLessonPlans='G:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\'
 
 def createListOFiles(weekNo,day):
 
 
-    thisdir = 'G:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\'
+    thisdir = pathToYourLessonPlans
 
     extensions=['.ipynb']
     files=[]
@@ -22,20 +28,12 @@ def createListOFiles(weekNo,day):
     for x in os.walk(thisdir):
         
         for ext in extensions:
-            # print(glob.glob(x[0]+"\\"+weekNo+"*\\"+dayNo+"\\Activities\\*Ins*\\Solved\\*"+ext))
-           
-            # print(glob.glob(x[0]+"\\*\\*\\Activities\\*\\Solved\\Ins*"+ext, recursive=True))
-        # break
-            for py in glob.glob(x[0]+"\\"+weekNo+"*\\"+day+"\\Activities\\*Ins*\\Solved\\*"+ext, recursive=True):
+             for py in glob.glob(x[0]+"\\"+weekNo+"*\\"+day+"\\Activities\\*Ins*\\Solved\\*"+ext, recursive=True):
                 # print(py)
                 if len(py)>0:
                     files.append(py)
-    # print(files)
     return files
 
-
-# t.play()
-# createWPL("02")
 
 
 def create_baseFile(baseName):
@@ -75,7 +73,7 @@ def mergeAllJupyterFile(file=None, base=baseName):
     if not os.path.exists(base):
         create_baseFile(base)
 
-    filehdr=file.replace("G:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\","")
+    filehdr=file.replace(pathToYourLessonPlans,"")
     # read files
     Filename=base
     base_file = read_file_as_json(Filename)
@@ -146,9 +144,9 @@ def is_target_notebooks_exists(listOfFiles):
             return True
     return False
 
-def main(listOfiles):
+def main(listOfFiles):
 	# get the list of all the files
-    listOfFiles = listOfiles
+    
 
     # remove unwanted files from list of files
     if '.ipynb_checkpoints' in listOfFiles:
@@ -167,15 +165,7 @@ def main(listOfiles):
             mergeAllJupyterFile(file,baseName)
     create_base_for_results(baseName)
         
-# if __name__=="__main__":
-#     try:
-#         main()
-#         print("\n## Attempt Successfull!! ##")
-#     except Exception as e:
-#         print(e)
-#     finally:
-#         print("## For any feedbacks mail-to: <sunny.c17hawke@gmail.com> ##\n")
+
 
 main(createListOFiles(weekNo,dayNo))
 
-# print(createListOFiles(weekNo,dayNo))
