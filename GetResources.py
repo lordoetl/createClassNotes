@@ -10,16 +10,7 @@ import fileinput
 # base='G:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\05-Matplotlib\\3\\Activities\\02-Ins_Quartiles_and_Outliers\\Resources\\lax_temperature.csv'
 
 
-weekNo="05"
-dayNo="3"
-baseName = weekNo+'_Notes.ipynb'
-pathToYourLessonPlans='G:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\'
 
-thisdir = pathToYourLessonPlans
-
-
-
-root_logDir = os.path.join(os.curdir, "results_folder"+weekNo)
 # print(root_logDir)
 def createResources(weekNo, dayNo, baseName, pathToYourLessonPlans,pathOut):
     def create_base_for_results(base):
@@ -56,7 +47,7 @@ def createResources(weekNo, dayNo, baseName, pathToYourLessonPlans,pathOut):
 
 
 
-    for x in os.walk(thisdir):
+    for x in os.walk(pathToYourLessonPlans):
         for pyout in glob.glob(x[0]+"\\"+weekNo+"*\\"+dayNo+"\\Activities\\*Ins*\\Resources\\*", recursive=True):
                 # print(pyout)
                 
