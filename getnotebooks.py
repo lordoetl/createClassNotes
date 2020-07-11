@@ -128,7 +128,7 @@ def create_base_for_results(base):
 the following location ##\n{move_to_path}")
     
     move_file_sub_log_dir(baseName,move_to_path)
-    GetResources.createResources(weekNo,dayNo,baseName,pathToYourLessonPlans,move_to_path)
+    GetResources.createResources(weekNo,dayNo,baseName,pathToYourLessonPlans,root_logDir)
 
 class CleanExit(Exception):
     '''Protects program from stopping abruptly'''
