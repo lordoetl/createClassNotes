@@ -1,11 +1,23 @@
 
   
 ###############
+# This is the driver that will grab all of your notebooks out of the instructor activites and merge them
+# This will also grab the Resources and put them in a single folder.
+#
 # The jupyter merging part of this was duplicated from:
 # '''
 # # Author: Sunny Bhaveen Chandra
 # # Contact: sunny.c17hawke@gmail.com
 # '''
+#
+#
+#  INSTRUCTIONS:
+#  change the following variables and run
+#  pathToYourLessonPlans=<this is the path to where you have cloned your lessonplans>
+#  weekNo="<the week you are in>"
+#  dayNo="<which of the 3 days you are in>"
+#
+#  You can change baseName if you want to change the name of the file.
 ###
 import time
 import random
@@ -21,16 +33,11 @@ baseName = weekNo+'_Notes.ipynb'
 pathToYourLessonPlans='G:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\'
 
 def createListOFiles(weekNo,day):
-
-
     thisdir = pathToYourLessonPlans
-
     extensions=['.ipynb']
     files=[]
-
-
     for x in os.walk(thisdir):
-        
+       
         for ext in extensions:
              for py in glob.glob(x[0]+"\\"+weekNo+"*\\"+day+"\\Activities\\*Ins*\\Solved\\*"+ext, recursive=True):
                 # print(py)
