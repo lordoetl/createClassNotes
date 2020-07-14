@@ -16,10 +16,11 @@ should also be in place, with all of the resources for that day included.
 
 
 All of the "merging" the notebooks came from :
-###############
+
 The jupyter merging part of this was duplicated from:
 
 Author: Sunny Bhaveen Chandra
+
 Contact: sunny.c17hawke@gmail.com
 
 Wouldn't have done this without the great  work done by Sunny
