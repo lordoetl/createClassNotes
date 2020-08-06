@@ -15,10 +15,10 @@ import json
 import time
 import GetResources
 
-weekNo="05"
+weekNo="06"
 dayNo="3"
 baseName = weekNo+'_Notes.ipynb'
-pathToYourLessonPlans='G:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\'
+pathToYourLessonPlans='D:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\'
 
 def createListOFiles(weekNo,day):
 
