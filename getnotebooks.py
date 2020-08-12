@@ -27,10 +27,10 @@ import json
 import time
 import GetResources
 
-weekNo="06"
-dayNo="3"
+weekNo="10"
+dayNo="2"
 baseName = weekNo+'_Notes.ipynb'
-pathToYourLessonPlans='D:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\'
+pathToYourLessonPlans='G:\\Projects\\DataViz-Lesson-Plans\\01-Lesson-Plans\\'
 
 def createListOFiles(weekNo,day):
     thisdir = pathToYourLessonPlans
@@ -75,7 +75,7 @@ def create_baseFile(baseName):
 	    f.write(baseData)
 
 def read_file_as_json(Filename):
-    with open(Filename,'r') as f:
+    with open(Filename,'r', errors='ignore') as f:
         whole_file = f.read()
     data = json.loads(whole_file)
     return data
